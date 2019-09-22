@@ -32,4 +32,4 @@ if __name__ == '__main__':
    with open(os.path.join(cur_dir,'model','model.pkl'), 'rb') as model_file:
        loaded_model = joblib.load(model_file) # Load "model.pkl"
 
-   app.run(port=8051, debug=True)
+   app.run()
