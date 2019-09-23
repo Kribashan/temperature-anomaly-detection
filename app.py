@@ -6,13 +6,16 @@ import os
 
 #creating instance of the class
 app=Flask(__name__)
-
+loaded_model = joblib.load(open('model.pkl', 'rb')) # Load "model.pkl"
+    
 @app.route('/')
 def index():
     return 'Hello World'  
 
 @app.route('/predict', methods=['POST'])
 def predict():
+
+
     if loaded_model:
         try:
             json_ = request.json
@@ -31,9 +34,9 @@ def predict():
 
 
 if __name__ == '__main__':
-   cur_dir = os.path.dirname(__file__)
+   #cur_dir = os.path.dirname(__file__)
 
-   with open(os.path.join(cur_dir,'model','model.pkl'), 'rb') as model_file:
-       loaded_model = joblib.load(model_file) # Load "model.pkl"
+   #with open(os.path.join(cur_dir,'model','model.pkl'), 'rb') as model_file:
+   #   loaded_model = joblib.load(model_file) # Load "model.pkl"
 
    app.run()
