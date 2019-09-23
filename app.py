@@ -7,6 +7,10 @@ import os
 #creating instance of the class
 app=Flask(__name__)
 
+@app.route('/')
+def index():
+    return 'Hello World'  
+
 @app.route('/predict', methods=['POST'])
 def predict():
     if loaded_model:
